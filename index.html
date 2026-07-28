@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>evar0801 — 制作物と、その設計判断</title>
-<meta name="description" content="Minecraft Mod の開発と、友人6人が実際に遊ぶサーバーの運用記録。作って、人に使わせて、壊れ方を見て直すまで。">
+<meta name="description" content="Minecraft Mod の開発と友人6人が遊ぶサーバーの運用、AIエージェント向けの侵入検知ツール。作って、人に使わせて、壊れ方を見て直すまで。">
 <meta name="author" content="evar0801">
 <link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="evar0801">
 <meta property="og:title" content="作って、人に使わせて、壊れ方を見て直した記録">
-<meta property="og:description" content="Minecraft Mod の開発と、友人6人が実際に遊ぶサーバーの運用記録。技術そのものより、どう判断したかをまとめています。">
+<meta property="og:description" content="Minecraft Mod 2本と、AIエージェント向けの侵入検知ツール。技術そのものより、どう判断したかをまとめています。">
 <meta property="og:image" content="https://evar0801.github.io/ogp.jpg">
 <meta property="og:url" content="https://evar0801.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="作って、人に使わせて、壊れ方を見て直した記録">
-<meta name="twitter:description" content="Minecraft Mod の開発と実運用サーバーの記録。">
+<meta name="twitter:description" content="Minecraft Mod 2本と、AIエージェント向けの侵入検知ツールの記録。">
 <meta name="twitter:image" content="https://evar0801.github.io/ogp.jpg">
 <style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
 </head>
@@ -173,15 +173,18 @@
     <ul class="works">
       <li>
         <div class="t">fc8weight<span class="meta">Java ／ Forge 1.20.1</span></div>
-        <div class="d">装備の重さと筋力要求を足す Mod。小規模だからこそ、<strong>設計判断を隅々まで説明できる</strong>1本目。このページで詳しく扱います。</div>
+        <div class="d">装備の重さと筋力要求を足す Mod。小規模だからこそ、<strong>設計判断を隅々まで説明できる</strong>1本目。このページで詳しく扱います。<br>
+        → <a href="https://github.com/evar0801/fc8weight">github.com/evar0801/fc8weight</a></div>
       </li>
       <li>
         <div class="t">ShauraDungeonMod<span class="meta">Java 298ファイル ／ 約12,000行</span></div>
-        <div class="d">専用の異世界を作り、そこにいる NPC と関係を築きながらボスに挑む Mod。<strong>作りたかったものに技術が追いつかなかった</strong>ところまで含めて公開しています。下で詳しく扱います。</div>
+        <div class="d">専用の異世界を作り、そこにいる NPC と関係を築きながらボスに挑む Mod。<strong>作りたかったものに技術が追いつかなかった</strong>ところまで含めて公開しています。下で詳しく扱います。<br>
+        → <a href="https://github.com/evar0801/ShauraDungeonMod">github.com/evar0801/ShauraDungeonMod</a></div>
       </li>
       <li>
         <div class="t">MCP-IDS<span class="meta">Python ／ ハッカソン</span></div>
-        <div class="d">AI エージェントが外部の文章に仕込まれた命令に騙される瞬間を、<strong>通信を傍受して捕まえる</strong>ツール。専攻しているネットワークセキュリティの考え方をそのまま持ち込んでいます。下で詳しく扱います。</div>
+        <div class="d">AI エージェントが外部の文章に仕込まれた命令に騙される瞬間を、<strong>通信を傍受して捕まえる</strong>ツール。専攻しているネットワークセキュリティの考え方をそのまま持ち込んでいます。下で詳しく扱います。<br>
+        → <a href="https://github.com/atmatsuda/techc_hack7">github.com/atmatsuda/techc_hack7</a>（チームのリポジトリ）</div>
       </li>
     </ul>
     <p class="quiet">ほかに、運用中のサーバーの不具合を直すために書いた小規模な Mod が十数個あります。
@@ -369,7 +372,8 @@
 
     <p class="quiet">ダンジョン内の道案内も作り込めていません。時間の多くを運用中のサーバーの改善に使ったためで、
     代わりに「3回死んだら外に出られる」という安全弁を置いて一旦の決着にしました。
-    できなかったことと、その理由もリポジトリの <code>README.md</code> に書いています。</p>
+    できなかったことと、その理由も
+    <a href="https://github.com/evar0801/ShauraDungeonMod#readme">リポジトリの README</a> に書いています。</p>
   </section>
 
   <section>
@@ -417,6 +421,30 @@
     <p class="quiet">最後の1行は、ネットワークの侵入検知が20年以上前から抱えている
     「難読化して検知をすり抜ける」問題と同じ形をしていました。先人が通った道を踏み直した感覚があります。</p>
 
+    <h3>自分の検知器を、自分で攻撃する</h3>
+    <p>数字が出たあと、<strong>「この検知器はどう破れるか」を考える側に回りました。</strong>
+    攻撃のシナリオを5つ書き足しています。</p>
+    <div class="tw">
+      <table>
+        <tr><th>シナリオ</th><th>ねらい</th></tr>
+        <tr><td>多段の伝播</td><td>攻撃を2回のやり取りに分割する。<strong>1回目にも2回目にも完全な命令は存在せず</strong>、両方を実行して初めて送信先が組み上がる</td></tr>
+        <tr><td>ツール説明の汚染</td><td>ツールの<strong>応答</strong>ではなく<strong>説明文そのもの</strong>に命令を仕込む。一覧を読んだ時点、つまり<strong>まだ一度も呼んでいない段階</strong>で汚染される</td></tr>
+        <tr><td>そっくりな別文字での回避</td><td><code>send_email</code> の文字をキリル文字に1字ずつ置き換える。人間の目には同じに見えるが、文字コードは完全に別物</td></tr>
+        <tr><td>多言語化</td><td>同じ手口を簡体字中国語で書く。README に「今後の課題」と書いていた項目を、自分で確かめにいった</td></tr>
+        <tr><td>緊急性＋やわらかい権威詐称</td><td><strong>自分の検知ルールが一番得意な「[システム通知]」の形をあえて避けて</strong>書いた攻撃</td></tr>
+      </table>
+    </div>
+    <p>最後の1つが、自分では一番面白いと思っているところです。
+    <strong>作った側に都合のいい攻撃だけで測っても意味がない</strong>ので、自分の検知が苦手な形を狙って書きました。</p>
+
+    <h3>人が動かせる状態にする</h3>
+    <p>数字を出しても、手元で動かせなければ確かめてもらえません。3つ用意しました。</p>
+    <ul>
+      <li><strong>セットアップ不要のデモ</strong> — <code>viewer/index.html</code> をブラウザで開くだけ。インストールも外部通信も要りません</li>
+      <li><strong>コマンド1つのセットアップと導入手順</strong> — 自分の環境で動かしたい人向け</li>
+      <li><strong>説明資料を2種類</strong> — 前提を知っている人向けと、<strong>知らない人向け</strong>を分けて作りました</li>
+    </ul>
+
     <h3>チームでの動き方と、そこで気づいたこと</h3>
     <p>実装は自分が全部やりました。チームで分けたのは最後の発表で、
     区間ごとに担当を割り、作った内容をメンバーに共有して、それぞれのパートを話してもらう形にしました。</p>
@@ -429,8 +457,11 @@
     自分では見えていませんでした。それを埋めたのがチームだった、というのが正直なところです。
     次は実装のほうも分担してみたいと思っています。</p>
 
-    <p class="quiet"><strong>いまの状態:</strong> 外部企業による評価を 2026年7月29日 に受ける予定です。
-    それまでリポジトリは非公開にしています。評価をいただいた時点で、この節に結果を追記します。</p>
+    <p class="quiet"><strong>いまの状態:</strong> 外部企業による評価を <strong>2026年7月29日</strong>に受けます。
+    結果は出しだいこの節に追記します。コードはチームのリポジトリで公開しています →
+    <a href="https://github.com/atmatsuda/techc_hack7">github.com/atmatsuda/techc_hack7</a>。
+    「実装は自分が担当した」と上に書きましたが、そこは
+    <a href="https://github.com/atmatsuda/techc_hack7/commits/main/">コミット履歴</a>で確かめていただけます。</p>
   </section>
 
   <section>
@@ -446,16 +477,48 @@
   <section>
     <span class="rail">リンク</span>
     <h2>ソースコード</h2>
+    <p>3つとも公開しています。<strong>リポジトリ全体を読む必要はありません。</strong>
+    それぞれ「最初に開くならこれ」を挙げておくので、そこだけ見ていただければ中身が伝わるようにしてあります。</p>
+
     <div class="repo">
-      <div class="u">github.com/evar0801/fc8weight</div>
-      <div class="s">このページで扱った Mod。設計の記録は <code>docs/DESIGN_LOG.md</code> にあります</div>
+      <div class="u"><a href="https://github.com/evar0801/fc8weight">github.com/evar0801/fc8weight</a></div>
+      <div class="s">Java ／ Forge 1.20.1 ／ MIT　—　このページで詳しく扱った Mod<br>
+      <strong>判断の理由から読むなら</strong> →
+      <a href="https://github.com/evar0801/fc8weight/blob/main/docs/DESIGN_LOG.md">docs/DESIGN_LOG.md</a>
+      （捨てた案と、使われなくなったコードの死因まで書いています）<br>
+      <strong>コードから読むなら</strong> →
+      <a href="https://github.com/evar0801/fc8weight/blob/main/src/main/java/com/fc8/fc8weight/StrengthRequirement.java">StrengthRequirement.java</a>
+      （このページの「1つの数値」を決めている本体。150行ほど）</div>
     </div>
+
     <div class="repo">
-      <div class="u">github.com/evar0801/ShauraDungeonMod</div>
-      <div class="s">約12,000行の大規模 Mod</div>
+      <div class="u"><a href="https://github.com/evar0801/ShauraDungeonMod">github.com/evar0801/ShauraDungeonMod</a></div>
+      <div class="s">Java ／ Forge 1.20.1 ／ MIT　—　298ファイル・約12,000行<br>
+      <strong>全体像を知るなら</strong> →
+      <a href="https://github.com/evar0801/ShauraDungeonMod#readme">README</a>
+      （作りたかったもの、詰んだ3方向、できなかったことまで）<br>
+      <strong>コードから読むなら</strong> →
+      <a href="https://github.com/evar0801/ShauraDungeonMod/blob/main/src/main/java/com/example/shauradungeon/companion_ai/PriorityEvaluator.java">PriorityEvaluator.java</a>
+      （NPC の次の行動を <code>if</code> ではなくスコアで決めている部分）</div>
     </div>
-    <p class="quiet" style="margin-top:1.2rem;">どちらも MIT ライセンスで公開しています。
-    読んでいただいた感想や、「ここはこう書くべき」という指摘をいただけるとありがたいです。</p>
+
+    <div class="repo">
+      <div class="u"><a href="https://github.com/atmatsuda/techc_hack7">github.com/atmatsuda/techc_hack7</a></div>
+      <div class="s">Python　—　ハッカソンのチームのリポジトリ。実装は自分が担当しました<br>
+      <strong>まず動かすなら</strong> →
+      <a href="https://github.com/atmatsuda/techc_hack7/blob/main/viewer/index.html">viewer/index.html</a>
+      をダウンロードしてブラウザで開くだけ（インストール不要・外部通信なし）<br>
+      <strong>攻撃の中身を読むなら</strong> →
+      <a href="https://github.com/atmatsuda/techc_hack7/tree/main/mcp_ids/scenarios">mcp_ids/scenarios/</a>
+      （5種類の攻撃シナリオ。日本語で「どういう攻撃か」から書いています）<br>
+      <strong>誰が書いたかを確かめるなら</strong> →
+      <a href="https://github.com/atmatsuda/techc_hack7/commits/main/">コミット履歴</a></div>
+    </div>
+
+    <p class="quiet" style="margin-top:1.2rem;">Mod の2つは MIT ライセンスです。
+    読んでいただいた感想や、「ここはこう書くべき」という指摘をいただけるとありがたいです。
+    連絡先は <a href="mailto:kazu.evar81@gmail.com">kazu.evar81@gmail.com</a>、
+    GitHub は <a href="https://github.com/evar0801">github.com/evar0801</a> です。</p>
   </section>
 
 </div>
