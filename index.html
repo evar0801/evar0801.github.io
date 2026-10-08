@@ -191,14 +191,16 @@
         <div class="d">守らせたいルールは、AI がツールを使う前後に走るスクリプトにしています。たとえば 2 つの会話が同じ文書を同時に書かないよう、書く前にロックを取らせます。
         これを会話で調整していたときは 1 回の作業で約 27,000 トークンを使い、役に立ったのはその 1 割ほどでした。</div></li>
       <li><div class="t">ブラウニー<span class="meta">Python ／ git worktree</span></div>
-        <div class="d">席を外している間に、作業票を 1 枚ずつ使い捨ての会話で回す無人実行の仕組み。結果は別の審判役が判定し、上限金額と終了の条件は機械で持たせています。</div></li>
+        <div class="d">席を外している間に、作業票を 1 枚ずつ使い捨ての会話で回す無人実行の仕組み。結果は別の審判役が判定し、上限金額と終了の条件は機械で持たせています。<br>
+        → <a href="https://github.com/evar0801/brownie">github.com/evar0801/brownie</a></div></li>
       <li><div class="t">Respawnkeeper<span class="meta">PowerShell</span></div>
         <div class="d">ゲームサーバーが落ちたら、原因を特定して直し、再起動するまでを自動で行う仕組み。診断は LLM を使わない表引きで、ゲーム固有の部分はデータとして分離しています。
-        診断のルールは 16 本、自己テストは 332 件。本物の障害にどれだけ当たるかの測定はこれからです。</div></li>
+        診断のルールは 16 本、自己テストは 332 件。本物の障害にどれだけ当たるかの測定はこれからです。<br>
+        → <a href="https://github.com/evar0801/respawnkeeper">github.com/evar0801/respawnkeeper</a></div></li>
       <li><div class="t">手順書（スキル）26 本<span class="meta">Claude Code</span></div>
         <div class="d">繰り返す作業を、AI が読む手順書として切り出したもの。設計判断・敵対レビュー・配備・引き継ぎなどの型を持ちます。</div></li>
     </ul>
-    <p class="quiet">友人のサーバーの情報を含むものがあるため、これらのコードは公開していません。</p>
+    <p class="quiet">ブラウニーと Respawnkeeper のコードは公開しています（上のリンク）。フックと手順書は、友人のサーバーの情報を含むものがあるため公開していません。</p>
   </section>
 
   <section id="governance">
